@@ -11,3 +11,6 @@ s3_clock_skew,Gayatri,manual,3,82.0,True,Compared timestamps by hand across host
 s3_clock_skew,Manasvi,tool,1,14.3,True,Viewed skew-corrected timeline for db01 login
 s3_clock_skew,Manasvi,tool,2,7.5,True,Timeline filter by IP
 s3_clock_skew,Manasvi,tool,3,11.2,True,Chronological order with skew correction enabled
+s2_web_attack,Manasvi,manual,1,14.3,True,
+s2_web_attack,Manasvi,manual,2,0.4,True,
+s2_web_attack,Manasvi,manual,3,1.0,True,
