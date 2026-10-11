@@ -1,0 +1,87 @@
+{
+  "case_id": "s3_clock_skew",
+  "attacker_ips": [
+    "203.0.113.90"
+  ],
+  "steps": [
+    {
+      "id": "S3-01",
+      "ts_utc": "2026-10-08T09:00:00Z",
+      "host": "web01",
+      "event_type": "web_scan",
+      "match": {
+        "src_ip": "203.0.113.90"
+      },
+      "description": "Scan web01"
+    },
+    {
+      "id": "S3-02",
+      "ts_utc": "2026-10-08T09:05:30Z",
+      "host": "web01",
+      "event_type": "web_sqli_attempt",
+      "match": {
+        "src_ip": "203.0.113.90"
+      },
+      "description": "SQLi web01"
+    },
+    {
+      "id": "S3-03",
+      "ts_utc": "2026-10-08T09:08:12Z",
+      "host": "web01",
+      "event_type": "web_webshell_access",
+      "match": {
+        "src_ip": "203.0.113.90"
+      },
+      "description": "Webshell web01"
+    },
+    {
+      "id": "S3-04",
+      "ts_utc": "2026-10-08T09:12:45Z",
+      "host": "db01",
+      "event_type": "ssh_accepted_login",
+      "match": {
+        "src_ip": "192.0.2.10",
+        "username": "dbadmin"
+      },
+      "description": "Pivot to DB"
+    },
+    {
+      "id": "S3-05",
+      "ts_utc": "2026-10-08T09:14:03Z",
+      "host": "db01",
+      "event_type": "sudo_command",
+      "match": {
+        "username": "dbadmin"
+      },
+      "description": "sudo on db01"
+    },
+    {
+      "id": "S3-06",
+      "ts_utc": "2026-10-08T09:15:30Z",
+      "host": "db01",
+      "event_type": "web_request",
+      "match": {
+        "src_ip": "203.0.113.90"
+      },
+      "description": "Export on db01"
+    }
+  ],
+  "triage_questions": [
+    {
+      "q": "When did the attacker first successfully log in (UTC)?",
+      "answer": "2026-10-08T09:12:45Z"
+    },
+    {
+      "q": "Which source IP?",
+      "answer": "203.0.113.90"
+    },
+    {
+      "q": "Which happened first: web01 webshell or db01 login?",
+      "answer": "web01 webshell"
+    }
+  ],
+  "expected_parse_gaps": 0,
+  "expected_skew": {
+    "db01": -420
+  }
+}

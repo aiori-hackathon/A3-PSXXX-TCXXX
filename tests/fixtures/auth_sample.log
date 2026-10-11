@@ -1,0 +1,12 @@
+Oct  3 02:14:00 web01 sshd[100]: Server listening on 0.0.0.0 port 22.
+Oct  3 02:14:07 web01 sshd[1234]: Failed password for invalid user admin from 203.0.113.50 port 51122 ssh2
+Oct  3 02:14:15 web01 sshd[1235]: Accepted publickey for deploy from 192.168.1.10 port 40112 ssh2
+Oct  3 02:15:00 web01 sudo:  deploy : TTY=pts/0 ; PWD=/home/deploy ; USER=root ; COMMAND=/bin/bash
+Oct  3 02:15:30 web01 useradd[1500]: new user: name=attacker, UID=1001, GID=1001, home=/home/attacker, shell=/bin/bash
+Oct  3 02:16:00 web01 sshd[1235]: Disconnected from user deploy 192.168.1.10 port 40112
+Oct  3 02:16:10 web01 sshd[1300]: pam_unix(sshd:session): session opened for user deploy by (uid=0)
+Oct  3 02:17:00 web01 sshd[1300]: pam_unix(sshd:session): session closed for user deploy
+Oct  3 02:18:00 web01 sshd[1400
+Garbage line not matching syslog
+Feb 30 12:00:00 web01 sshd[100]: Invalid date test
+

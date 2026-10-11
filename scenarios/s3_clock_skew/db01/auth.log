@@ -1,0 +1,2 @@
+Oct  8 14:49:45 db01 sshd[1234]: Accepted password for dbadmin from 192.0.2.10 port 51122 ssh2
+Oct  8 14:51:03 db01 sudo: dbadmin : TTY=pts/0 ; PWD=/home/dbadmin ; USER=root ; COMMAND=/bin/bash

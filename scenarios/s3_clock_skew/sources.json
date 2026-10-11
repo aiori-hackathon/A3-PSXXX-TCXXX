@@ -1,0 +1,31 @@
+{
+  "case_id": "s3_clock_skew",
+  "year_hint": 2026,
+  "reference_host": "web01",
+  "sources": [
+    {
+      "path": "web01/auth.log",
+      "host": "web01",
+      "source_type": "auth_log",
+      "declared_tz": "UTC"
+    },
+    {
+      "path": "web01/access.log",
+      "host": "web01",
+      "source_type": "nginx",
+      "declared_tz": "UTC"
+    },
+    {
+      "path": "db01/auth.log",
+      "host": "db01",
+      "source_type": "auth_log",
+      "declared_tz": "Asia/Kolkata"
+    },
+    {
+      "path": "db01/access.log",
+      "host": "db01",
+      "source_type": "nginx",
+      "declared_tz": "UTC"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+scenario,tester,condition,question_id,seconds,correct,notes
+s1_ssh_bruteforce,Gayatri,manual,1,46.5,True,Grep for Accepted password in auth.log
+s1_ssh_bruteforce,Gayatri,manual,2,19.2,True,Found source IP from failed and accepted attempts
+s1_ssh_bruteforce,Gayatri,manual,3,34.8,True,Grep sudo in auth.log found session command
+s1_ssh_bruteforce,Manasvi,tool,1,12.4,True,Filtered timeline by ssh_accepted_login
+s1_ssh_bruteforce,Manasvi,tool,2,6.8,True,Read src_ip from event detail column
+s1_ssh_bruteforce,Manasvi,tool,3,9.5,True,Filtered timeline by sudo_command
+s2_web_attack,Manasvi,manual,1,51.3,True,Searched access.log for login endpoints none found
+s2_web_attack,Manasvi,manual,2,22.4,True,Inspected 404 scan requests for attacker IP
+s2_web_attack,Manasvi,manual,3,36.1,True,Searched for sudo commands in web logs not applicable
+s2_web_attack,Gayatri,tool,1,8.2,True,Filtered by login events in CLI returned 0 rows
+s2_web_attack,Gayatri,tool,2,7.1,True,Read attacker IP from web attack events
+s2_web_attack,Gayatri,tool,3,6.5,True,Filtered by sudo_command returned 0 rows
+s3_clock_skew,Gayatri,manual,1,78.2,False,Read raw db01 timestamp 09:19:45 without knowing clock skew
+s3_clock_skew,Gayatri,manual,2,26.4,True,Matched attacker IP across web and ssh logs
+s3_clock_skew,Gayatri,manual,3,82.0,True,Compared timestamps by hand across hosts
+s3_clock_skew,Manasvi,tool,1,14.3,True,Viewed skew-corrected timeline for db01 login
+s3_clock_skew,Manasvi,tool,2,7.5,True,Timeline filter by IP
+s3_clock_skew,Manasvi,tool,3,11.2,True,Chronological order with skew correction enabled

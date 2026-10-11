@@ -1,0 +1,9 @@
+192.168.1.50 - - [03/Oct/2026:02:30:00 +0000] "GET /index.html HTTP/1.1" 200 1024 "-" "Mozilla/5.0"
+192.168.1.51 - - [03/Oct/2026:02:31:00 +0000] "GET /admin HTTP/1.1" 404 512 "-" "sqlmap/1.7"
+192.168.1.52 - - [03/Oct/2026:02:32:00 +0000] "GET /product.php?id=1%27%20UNION%20SELECT%201,2 HTTP/1.1" 200 2048 "-" "Mozilla/5.0"
+192.168.1.53 - - [03/Oct/2026:02:33:00 +0000] "GET /product.php?id=1%2527%2520UNION%2520SELECT%25201,2 HTTP/1.1" 200 2048 "-" "Mozilla/5.0"
+192.168.1.54 - - [03/Oct/2026:02:34:00 +0000] "GET /images/../../../../etc/passwd HTTP/1.1" 403 256 "-" "Mozilla/5.0"
+192.168.1.55 - - [03/Oct/2026:02:35:00 +0000] "POST /upload.php HTTP/1.1" 201 128 "-" "curl/7.68.0"
+192.168.1.56 - - [03/Oct/2026:02:36:00 +0000] "GET /shell.php?cmd=whoami HTTP/1.1" 200 64 "-" "curl/7.68.0"
+192.168.1.57 - - [03/Oct/2026:02:37:00 +0000] "GET /truncated
+[error] 2026/10/03 02:38:00 Different format line

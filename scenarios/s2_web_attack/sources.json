@@ -1,0 +1,13 @@
+{
+  "case_id": "s2_web_attack",
+  "year_hint": 2026,
+  "reference_host": "web01",
+  "sources": [
+    {
+      "path": "access.log",
+      "host": "web01",
+      "source_type": "nginx",
+      "declared_tz": "UTC"
+    }
+  ]
+}

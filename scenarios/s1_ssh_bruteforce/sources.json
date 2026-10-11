@@ -1,0 +1,13 @@
+{
+  "case_id": "s1_ssh_bruteforce",
+  "year_hint": 2026,
+  "reference_host": "web01",
+  "sources": [
+    {
+      "path": "auth.log",
+      "host": "web01",
+      "source_type": "auth_log",
+      "declared_tz": "UTC"
+    }
+  ]
+}

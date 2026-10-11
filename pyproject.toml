@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "forensic"
+version = "0.1.0"
+dependencies = [
+    "typer>=0.12",
+    "jinja2>=3.1",
+    "streamlit>=1.38",
+    "pandas>=2.2",
+]
+
+[project.scripts]
+forensic = "forensic.cli:app"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.6",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+forensic = ["schema.sql", "templates/*.j2"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+extend-exclude = ["src/forensic/models.py"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+ignore = ["E501", "W293", "W291", "I001", "F401", "E701"]

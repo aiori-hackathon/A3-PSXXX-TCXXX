@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Report for {{ case_id }}</title>
+    <style>
+        body { font-family: sans-serif; margin: 2rem; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 2rem; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        @media print {
+            body { margin: 0; }
+        }
+    </style>
+</head>
+<body>
+    <h1>Report for {{ case_id }}</h1>
+    
+    <h2>1. Case Summary</h2>
+    <p>Total events: {{ stats.total_events }}</p>
+    <p>Hosts: {{ stats.hosts | join(', ') }}</p>
+    <p>Time range: {{ stats.first_event }} to {{ stats.last_event }}</p>
+    
+    <h2>2. Executive Summary (Key Events)</h2>
+    <ul>
+    {% for ev in key_events %}
+        <li>{{ ev.ts_utc_corrected }} from {{ ev.src_ip }} as {{ ev.username }}: {{ ev.event_type }} - {{ ev.message }}</li>
+    {% endfor %}
+    </ul>
+    
+    <h2>3. Evidence Manifest</h2>
+    <table>
+        <tr><th>File</th><th>Host</th><th>Lines</th><th>Status</th><th>SHA-256</th></tr>
+        {% for ev in manifest %}
+        <tr>
+            <td>{{ ev.filename }}</td>
+            <td>{{ ev.host }}</td>
+            <td>{{ ev.line_count }}</td>
+            <td>{{ ev.verify_status }}</td>
+            <td>{{ ev.sha256 }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% if integrity_checks %}
+    <p><small>Integrity checks:
+        {% for c in integrity_checks %}
+        {{ c.file }}: {{ c.status }}{% if not loop.last %}, {% endif %}
+        {% endfor %}
+    </small></p>
+    {% endif %}
+    
+    <h2>4. Time Handling</h2>
+    <table>
+        <tr><th>Host</th><th>Offset (s)</th></tr>
+        {% for skew in skews %}
+        <tr><td>{{ skew.host }}</td><td>{{ skew.offset_s }}</td></tr>
+        {% endfor %}
+    </table>
+    
+    <h2>5. Key-Event Timeline</h2>
+    <table>
+        <tr><th>Time (UTC corrected)</th><th>Host</th><th>Event</th><th>Message</th><th>File ID</th><th>Line</th></tr>
+        {% for ev in key_events %}
+        <tr>
+            <td>{{ ev.ts_utc_corrected }}</td>
+            <td>{{ ev.host }}</td>
+            <td>{{ ev.event_type }}</td>
+            <td>{{ ev.message }}</td>
+            <td>{{ ev.evidence_id }}</td>
+            <td>{{ ev.line_no }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+    <h2>6. Parsing Gaps</h2>
+    <table>
+        <tr><th>File</th><th>Host</th><th>Total Lines</th><th>Parsed %</th><th>Gaps</th></tr>
+        {% for g in gaps %}
+        <tr>
+            <td>{{ g.filename }}</td>
+            <td>{{ g.host }}</td>
+            <td>{{ g.total_lines }}</td>
+            <td>{{ "%.2f"|format(g.parsed_pct) }}%</td>
+            <td>{{ g.gaps }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+    <h2>7. Limitations & Scope</h2>
+    <p>{{ limitations }}</p>
+    
+    <h2>8. Appendix</h2>
+    <p>Appendix content here.</p>
+</body>
+</html>

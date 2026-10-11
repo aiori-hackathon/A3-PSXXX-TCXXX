@@ -1,0 +1,19 @@
+{
+  "case_id": "fixture_case",
+  "year_hint": 2026,
+  "reference_host": "web01",
+  "sources": [
+    {
+      "path": "auth_sample.log",
+      "host": "web01",
+      "source_type": "auth_log",
+      "declared_tz": "UTC"
+    },
+    {
+      "path": "nginx_sample.log",
+      "host": "web01",
+      "source_type": "nginx",
+      "declared_tz": "UTC"
+    }
+  ]
+}
